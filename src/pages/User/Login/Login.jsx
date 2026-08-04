@@ -1,30 +1,52 @@
 import styles from './Login.module.css';
-import Button from '../../components/Button/Button.jsx'
+import Button from '../../../components/Button/Button.jsx'
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 export default function Login(){
     const [username, setUsername] = useState("");
     const [password, setpassword] = useState("");
-    const [error, setError] = useState("")
     
     const navigate = useNavigate();
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
 
         if(username.trim() === "" || password.trim() === ""){
-            setError('fill in all the fields')
+            toast.error('fill in all the fields')
             return;
         }
-        setError("");
-        const users = JSON.parse(localStorage.getItem('users'))|| [];
-       const userExist = users.some(user => user.username === username && user.password === password)
 
-       if(userExist){
-            navigate('/dashboard');
-       }
+        const response = await fetch("http://localhost:4000/api/users/login",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        const data = await response.json();
+       
+
+        if(!response.ok){
+            toast.error(data.message);
+            return;
+        }
+
+        toast.success(data.message);
+         localStorage.setItem("token", data.token);
+        localStorage.setItem("loggedInUser", data.username);
+        localStorage.setItem("role", data.role)
+        if(data.role === "admin"){
+            navigate("/admin");
+        }else{
+            navigate("/dashboard");
+        }
     }
 
     return(
@@ -35,8 +57,6 @@ export default function Login(){
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <input type='text' placeholder='Username' onChange={(e) => setUsername(e.target.value)}/>
                     <input type='password' placeholder='Password' onChange={(e) => setpassword(e.target.value)}/>
-
-                    {error && <p className={styles.error}> {error} </p>}
 
                      <div className={styles.forgotPw}>
                         <Link to="/forgot-password">Forgot Password?</Link>

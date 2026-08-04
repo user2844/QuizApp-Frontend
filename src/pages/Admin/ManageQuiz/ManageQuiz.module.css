@@ -1,0 +1,110 @@
+.mainContainer{
+    width:100%;
+    min-height:100vh;
+}
+
+.mainContainer h1{
+    margin-bottom:10px;
+}
+
+/* ---------------- Search Section ---------------- */
+
+.searchBarDiv{
+    display:flex;
+    align-items:center;
+    gap:clamp(.6rem,1vw,1rem);
+    padding:clamp(.5rem,1vw,1rem);
+    flex-wrap:wrap;
+}
+
+.searchBarDiv > *{
+    min-width:0;
+}
+
+.searchBarDiv input,
+.searchBarDiv select,
+.searchBarDiv button{
+    height:clamp(44px,5vw,52px);
+}
+
+/* ---------------- Table ---------------- */
+
+.questionsDiv{
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:14px;
+    overflow:hidden;
+}
+
+.tableHeader{
+
+    display:grid;
+
+    grid-template-columns:
+    minmax(0, 6fr)
+    minmax(180px, 2fr)
+    minmax(140px, 1fr)
+    minmax(110px, 1fr);
+
+    align-items:center;
+
+    column-gap:clamp(.8rem,2vw,1.4rem);
+
+    padding:
+        clamp(.8rem,1.5vw,1rem)
+        clamp(1rem,2vw,1.4rem);
+
+    background:rgba(255,255,255,.45);
+
+    backdrop-filter:blur(10px);
+
+    font-weight:700;
+
+    font-size:clamp(.9rem,1vw,1rem);
+
+    border-bottom:1px solid rgba(255,255,255,.3);
+}
+
+.tableHeader > div{
+    display:flex;
+    align-items:center;
+}
+
+
+.tableHeader > div:first-child{
+    justify-content:flex-start;
+}
+
+.tableHeader > div:nth-child(2),
+.tableHeader > div:nth-child(3),
+.tableHeader > div:nth-child(4){
+    justify-content:center;
+}
+
+/* ---------------- Tablet ---------------- */
+
+@media (max-width:900px){
+
+    .searchBarDiv{
+        gap:.7rem;
+    }
+
+}
+
+/* ---------------- Mobile ---------------- */
+
+@media (max-width:768px){
+
+    .searchBarDiv{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .searchBarDiv > *{
+        width:100%;
+    }
+
+    .tableHeader{
+        display:none;
+    }
+
+}

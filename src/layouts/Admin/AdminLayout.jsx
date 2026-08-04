@@ -1,12 +1,13 @@
-import style from './User.module.css';
+
+import style from './AdminLayout.module.css';
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/Header/Header.jsx'
+import Header from '../../components/Header/Header.jsx';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx'
 import { useState, useEffect } from 'react';
 import ConfirmModal from '../../components/ConfirmModal/ConfirmModal.jsx';
 import { useNavigate } from 'react-router-dom';
 
-export default function UserLayout(){
+export default function AdminLayout(){
 
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -22,7 +23,7 @@ export default function UserLayout(){
 
              <div className={style.bodyDiv}>
                 <Sidebar 
-                role="user"
+                role="admin"
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
                 onLogoutClick={() => setShowLogoutModal(true)}/>

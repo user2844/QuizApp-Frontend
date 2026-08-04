@@ -1,0 +1,139 @@
+.row {
+    display: grid;
+
+    /* Question | Category | Difficulty | Actions */
+    grid-template-columns:
+    minmax(0, 6fr)
+    minmax(180px, 2fr)
+    minmax(140px, 1fr)
+    minmax(110px, 1fr);
+
+    align-items: center;
+    column-gap: clamp(0.8rem, 1.5vw, 1.5rem);
+
+    padding: clamp(0.8rem, 1.2vw, 1rem)
+             clamp(1rem, 2vw, 1.5rem);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+    font-size: clamp(0.85rem, 1vw, 1rem);
+
+    transition: background 0.2s ease;
+}
+
+.row:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+/* Question */
+.row > div:first-child {
+    font-weight: 500;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+
+    display:flex;
+    align-items:center;
+}
+
+/* category && difficulty*/
+.row > div:nth-child(2),
+.row > div:nth-child(3){
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Actions */
+.actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: clamp(0.8rem, 1vw, 1.2rem);
+
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+}
+
+/* Icons */
+.actions svg {
+    cursor: pointer;
+
+    transition: transform .2s ease,
+                color .2s ease;
+}
+
+.actions svg:hover {
+    transform: scale(1.15);
+}
+
+.actions svg:first-child:hover {
+    color: #2563eb;
+}
+
+.actions svg:last-child:hover {
+    color: #dc2626;
+}
+
+
+@media (max-width:768px){
+
+    .tableHeader{
+        display:none;
+    }
+
+    .row{
+
+        display:flex;
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:.8rem;
+
+        padding:1rem;
+
+        border-bottom:1px solid rgba(0,0,0,.1);
+    }
+
+    .question{
+
+        font-size:1rem;
+
+        font-weight:600;
+
+        line-height:1.5;
+
+        width:100%;
+
+        word-break:break-word;
+    }
+
+    .category,
+    .difficulty{
+
+        font-size:.9rem;
+
+        color:#444;
+    }
+
+    .category span,
+    .difficulty span{
+
+        font-weight:700;
+    }
+
+    .actions{
+
+        width:100%;
+
+        display:flex;
+
+        justify-content:flex-end;
+
+        gap:1rem;
+    }
+}

@@ -1,7 +1,7 @@
 import style from "./Dashboard.module.css";
-import ProgressCircle from "../../components/ProgressCircle/ProgressCircle";
-import Button from "../../components/Button/Button.jsx";
-import ProfilePic from "../../assets/images/ProfilePic.jpg";
+import ProgressCircle from "../../../components/ProgressCircle/ProgressCircle.jsx";
+import Button from "../../../components/Button/Button.jsx";
+import ProfilePic from "../../../assets/images/ProfilePic.jpg";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -20,15 +20,41 @@ export default function Dashboard() {
 
 
   const navigate = useNavigate();
+  const username = localStorage.getItem("loggedInUser");
 
   useEffect(() => {
-    const result = JSON.parse(localStorage.getItem('quizResult'))
+   const token = localStorage.getItem("token");
+   
+   if(!token) return;
 
-    setScore(result.score);
-    setPercentage(result.percentage)
-  }, [])
+   async function fetchLatestResult() {
+      try {
+        const response = await fetch(`http://localhost:4000/api/records`,{
+          methodL: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        
+        if(response === 401){
+          localStorage.removeItem("token");
+          localStorage.removeItem("loggedInUser");
 
-
+          navigate('/');
+          return;
+        }
+        const data = await response.json();
+        
+        if(response.ok && data.result){
+          setScore(data.result.score);
+          setPercentage(data.result.percentage)
+        }
+      } catch (error) {
+        console.error("Failed to fetch latest quiz result:", error);
+      }
+   }
+   fetchLatestResult();
+  }, []);
 
 
   return (
@@ -41,7 +67,7 @@ export default function Dashboard() {
           <div className={style.profileDiv}>
             <div className={style.contextDiv}>
               <div className={style.contextHeader}>
-                <h3>Welcome back, Pemba. Let's beat your high score!</h3>
+                <h3>Welcome back, {username}. Let's beat your high score!</h3>
                 <p>Keep sharpening your mind, one quiz at a time.</p>
               </div>
               <div className={style.contextBtn}>
