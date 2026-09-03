@@ -38,9 +38,10 @@
 
 .correctBtn{
     background-color: rgba(21, 199, 56, 0.393);
-    box-shadow: 0px 8px 35px rgba(25, 228, 66, 0.593);
+    box-shadow: 0px 2px 10px rgba(11, 118, 34, 0.825);
     transition: all 0.5s ease;
     font-size: clamp(0.75rem, 1vw, 1rem);
+    border: 1px solid rgba(255, 255, 255, 0.534);
 }
 
 .correctBtn:hover{
@@ -50,13 +51,15 @@
 
 .wrongBtn{
     background-color: rgba(244, 30, 30, 0.707);
-    box-shadow: 0px 8px 35px rgba(189, 28, 28, 0.807);
+    box-shadow: 0px 2px 10px rgba(189, 28, 28, 0.807);
+    border: 1px solid rgba(255, 255, 255, 0.51);
+    font-size: clamp(0.75rem, 1vw, 1rem);
     transition: all 0.5s ease;
 }
 
 .wrongBtn:hover{
-    transform: scale(1.01);
-    background-color: rgba(244, 30, 30, 0.707);
+    transform: scale(1.02);
+    background-color: rgba(167, 3, 3, 0.886);
 }
 
 .toggleBtn{

@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "../pages/User/Login/Login.jsx";
 import SignUp from "../pages/User/Signup/SignUp.jsx";
 //for user layout pages
-import Quiz from "../pages/User/Quiz/QuizQuestion.jsx";
+import Quiz from "../pages/User/Quiz/TakeQuiz.jsx";
 import Dashboard from "../pages/User/Dashboard/Dashboard.jsx";
 import UserLayout from "../layouts/User/User.jsx";
 
@@ -11,10 +11,12 @@ import UserLayout from "../layouts/User/User.jsx";
 import AdminLayout from "../layouts/Admin/AdminLayout.jsx";
 import AdminDashboard from "../pages/Admin/AdminDashboard/Dashboard.jsx";
 import ManageQuiz from "../pages/Admin/ManageQuiz/ManageQuiz.jsx";
+import ManageCategory from "../pages/Admin/ManageCategory/ManageCategory.jsx";
 
 //utils
 import ProtectedRoute from '../components/ProtectedRoute/ProtectedRoute.jsx'
 import AdminProtectedRoute from "../components/AdminProtectedRoute/AdminProtectedRoute.jsx";
+
 
 export default function AppRoutes() {
 
@@ -41,6 +43,7 @@ export default function AppRoutes() {
      }>
         <Route path="/admin" element={<AdminDashboard/>}/>
         <Route path="/admin/questions" element={<ManageQuiz/>}/>
+        <Route path="/admin/categories" element= {<ManageCategory/>}/>
      </Route>
     </Routes>
   );

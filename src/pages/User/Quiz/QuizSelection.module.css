@@ -1,0 +1,64 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.container h1 {
+  margin-bottom: 30px;
+}
+
+.categoryGrid,
+.subCategoryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.categoryCard,
+.subCategoryCard {
+  min-height: 120px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  background: rgb(167, 198, 248);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.categoryCard:hover,
+.subCategoryCard:hover {
+  transform: translateY(-3px);
+}
+
+.selected {
+  border: 2px solid #4f46e5;
+  background: #7f76f8;
+}
+
+.subCategorySection {
+  margin-top: 50px;
+}
+
+.subCategorySection h2 {
+  margin-bottom: 25px;
+}
+
+.startButton {
+  display: block;
+  margin: 40px auto 0;
+  padding: 14px 35px;
+  border: none;
+  border-radius: 10px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  opacity: 0.9;
+}

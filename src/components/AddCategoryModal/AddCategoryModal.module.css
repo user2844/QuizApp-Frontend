@@ -1,0 +1,218 @@
+/* ================= Overlay ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:1rem;
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+
+    z-index:9999;
+}
+
+/* ================= Modal ================= */
+
+.modal{
+    position:relative;
+
+    width:min(100%,600px);
+
+    background:rgba(238, 230, 230, 0.38);
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:20px;
+
+    padding:2rem;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.18);
+
+    animation:popup .25s ease;
+}
+
+/* ================= Title ================= */
+
+.modal h1{
+
+    text-align:center;
+
+    margin-bottom:2rem;
+
+    font-size:clamp(1.6rem,2vw,2rem);
+
+    font-weight:700;
+}
+
+/* ================= Close Button ================= */
+
+.modal > button{
+
+    position:absolute;
+
+    top:1rem;
+    right:1rem;
+}
+
+/* ================= Form ================= */
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+}
+
+/* ================= Form Group ================= */
+
+.formGroup{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.7rem;
+}
+
+.formGroup label{
+
+    font-size:1rem;
+
+    font-weight:600;
+}
+
+/* ================= Inputs ================= */
+
+.formGroup input{
+
+    width:100%;
+
+    height:48px;
+
+    padding:0 1rem;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.25);
+
+    backdrop-filter:blur(12px);
+
+    font-size:1rem;
+
+    transition:.2s;
+}
+
+.formGroup input::placeholder{
+
+    color:#666;
+}
+
+.formGroup input:focus{
+
+    background:rgba(255,255,255,.35);
+
+    box-shadow:0 0 0 3px rgba(59,130,246,.2);
+}
+
+/* ================= Add Another Button ================= */
+
+.formGroup button{
+
+    width:fit-content;
+}
+
+/* ================= Bottom Buttons ================= */
+
+.buttonGroup{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-top:.5rem;
+
+    padding-top:1.5rem;
+
+    border-top:1px solid rgba(255,255,255,.2);
+}
+
+.buttonGroup > * {
+    flex: 0 0 140px;   /* both buttons exactly 140px */
+}
+/* ================= Animation ================= */
+
+@keyframes popup{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px) scale(.96);
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* ================= Tablet ================= */
+
+@media (max-width:768px){
+
+    .modal{
+
+        width:95%;
+
+        padding:1.5rem;
+    }
+
+}
+
+/* ================= Mobile ================= */
+
+@media (max-width:600px){
+
+    .modal{
+
+        padding:1.25rem;
+    }
+
+    .modal h1{
+
+        font-size:1.5rem;
+    }
+
+    .buttonGroup{
+
+        flex-direction:column-reverse;
+
+        gap:.8rem;
+    }
+
+    .buttonGroup button{
+
+        width:100%;
+    }
+
+    .formGroup button{
+
+        width:100%;
+    }
+
+}

@@ -16,6 +16,7 @@ export default function UserLayout(){
       sidebarOpen ? "hidden" : "auto";
     }, [sidebarOpen]);
 
+    
     return(
          <div className={style.mainWrapper}> 
                 <Header setSidebarOpen={setSidebarOpen}/>
@@ -36,7 +37,7 @@ export default function UserLayout(){
                   message="Do u want to Logout?"
                   onCancel={()=> setShowLogoutModal(false)}
                   onConfirm={ () =>{
-                    const keyToRemove =['token', 'loggedInUser']
+                    const keyToRemove =['token', 'loggedInUser', 'role']
 
                     keyToRemove.forEach(key => {
                       localStorage.removeItem(key)
